@@ -1,6 +1,6 @@
 name=emi-version
 tag=master
-package_version=3.5.0-1
+#package_version=3.5.0-1
 
 git=https://github.com/caifti/emi-version.git
 

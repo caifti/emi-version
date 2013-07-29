@@ -8,7 +8,7 @@ Summary: POST EMI 3 Update 4 - Update 7
 License: Apache Software License
 Group: System Environment/Libraries                                                                                                                                          
 Packager: Cristina Aiftimiei
-BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-XXXXXX)
 AutoReqProv: yes
 Source: emi-version-%{version}.tar.gz
 %description
