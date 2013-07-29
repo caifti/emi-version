@@ -3,6 +3,9 @@ prefix=/
 
 # needed dirs
 debbuild_dir=$(shell pwd)/debbuild
+rules_src=$(shell pwd)/debian/rules.in
+rules=$(shell pwd)/debian/rules
+
 #deb_version=3.0.0
 deb_age=1
 here=$(shell pwd)
@@ -30,7 +33,10 @@ install: build
 
 DISTFILES=debian
 
-srcdist:
+prepare-rules:
+	sed -e 's#@@PACKAGE_VERSION@@#$(package_version)#g' $(rules_src) > $(rules)
+
+srcdist: prepare-rules
 	mkdir -p $(here)/$(name)-$(package_version)
 	@cp -a $(DISTFILES) $(here)/$(name)-$(package_version)
 	cd $(here) && tar cvz --exclude='*.github*' -f $(name)_$(package_version).orig.tar.gz $(name)-$(package_version)/*
