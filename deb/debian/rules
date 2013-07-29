@@ -15,7 +15,7 @@ export DH_VERBOSE=5
 export DH_COMPAT=5
 
 build:build-stamp
-	echo "3.4.0-1" > emi-version
+	echo $(package_version)-$(deb_age) > emi-version
 
 build-stamp:
 	touch build-stamp
