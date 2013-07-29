@@ -6,7 +6,7 @@ Maintainer:  Cristina Aiftimiei <aiftim@pd.infn.it>
 Standards-Version:  3.9.2
 
 Package:  emi-version
-Architecture:  all
+Architecture:  amd64
 Depends:   
 Description:  package whose version identifies a snapshot of the EMI repository 
  contains emi-version file
