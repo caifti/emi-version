@@ -5,8 +5,8 @@ prefix=/
 debbuild_dir=$(shell pwd)/debbuild
 rules_src=$(shell pwd)/debian/rules.in
 rules=$(shell pwd)/debian/rules
-changelog_src=$(shell pwd)/debian/rules.in
-changelog=$(shell pwd)/debian/rules
+changelog_src=$(shell pwd)/debian/changelog.in
+changelog=$(shell pwd)/debian/changelog
 
 #deb_version=3.0.0
 deb_age=1
