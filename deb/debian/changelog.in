@@ -1,4 +1,4 @@
-emi-version (3.5.0-1.deb6.1) stable; urgency=low
+emi-version (@@PACKAGE_VERSION@@-@@DEB_AGE@@.deb6.1) stable; urgency=low
 
   * Switch to dpkg-source 3.0 (quilt) format
 
