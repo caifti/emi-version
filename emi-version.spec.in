@@ -1,0 +1,41 @@
+%global package_version @@PACKAGE_VERSION@@
+
+Name: emi-version
+Version: %{package_version}
+Release: 1%{?dist}
+Summary: POST EMI 3 Update 4 - Update 7
+
+License: Apache Software License
+Group: System Environment/Libraries                                                                                                                                          
+Packager: Cristina Aiftimiei
+BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+AutoReqProv: yes
+Source: emi-version-%{version}.tar.gz
+%description
+package whose version identifies a snapshot of the EMI repository
+
+%prep
+
+%setup
+
+%build
+
+ echo %{version}-%{release} > emi-version
+
+%install
+rm -rf $RPM_BUILD_ROOT
+ mkdir -p $RPM_BUILD_ROOT
+ mkdir -p $RPM_BUILD_ROOT/etc; cp -fp emi-version $RPM_BUILD_ROOT/etc
+ find $RPM_BUILD_ROOT -name '*.la' -exec rm -rf {} \;
+ find $RPM_BUILD_ROOT -name '*.pc' -exec sed -i -e "s|$RPM_BUILD_ROOT||g" {} \;
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+/etc/emi-version
+
+%changelog
+* Mon Jul 29 2013 Cristina Aiftimiei - 3.5.0-1
+- first git version
