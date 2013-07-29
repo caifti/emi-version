@@ -1,0 +1,12 @@
+Source:  emi-version
+Build-Depends:  debhelper (>> 6.0.0)
+Section:  devel
+Priority:  optional
+Maintainer:  Cristina Aiftimiei <aiftim@pd.infn.it>
+Standards-Version:  3.9.2
+
+Package:  emi-version
+Architecture:  all
+Depends:   
+Description:  package whose version identifies a snapshot of the EMI repository 
+ contains emi-version file
