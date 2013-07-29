@@ -34,7 +34,8 @@ install: build
 DISTFILES=debian
 
 prepare-rules:
-	sed -e 's#@@PACKAGE_VERSION@@#$(package_version)#g' $(rules_src) > $(rules)
+	@sed -e 's#@@PACKAGE_VERSION@@#$(package_version)#g' \
+	-e 's#@@DEB_AGE@@#$(deb_age)#g' $(rules_src) > $(rules)
 
 srcdist: prepare-rules
 	mkdir -p $(here)/$(name)-$(package_version)

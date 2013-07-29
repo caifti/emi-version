@@ -8,6 +8,8 @@
 
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=5
+package_version=@@PACKAGE_VERSION@@
+deb_age=@@DEB_AGE@@
 
 #%:
 #	dh $@
