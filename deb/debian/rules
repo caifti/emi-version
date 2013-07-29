@@ -9,5 +9,58 @@
 # Uncomment this to turn on verbose mode.
 export DH_VERBOSE=5
 
-%:
-	dh $@
+#%:
+#	dh $@
+
+export DH_COMPAT=5
+
+build:build-stamp
+	echo "3.4.0-1" > emi-version
+
+build-stamp:
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -rf build-stamp
+	rm -rf configure-stamp
+
+configure:configure-stamp
+	dh_testdir
+	dh_testroot
+
+configure-stamp:
+	touch configure-stamp
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep -k
+	dh_installdirs
+	mkdir -p debian/emi-version/
+	mkdir -p ./debian/emi-version//etc; cp -fp emi-version ./debian/emi-version//etc
+	find debian -name '*.la' -exec rm -rf {} \;
+
+binary-indep: build install
+
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs
+	dh_installman
+	dh_installchangelogs
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_makeshlibs
+#       dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+
+.PHONY: build clean binary-indep binary-arch binary install
