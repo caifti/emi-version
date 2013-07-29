@@ -26,7 +26,7 @@ print-info:
 prepare-sources: sanity-checks clean
 	mkdir -p $(source_dir)/$(name)
 	git clone $(git) $(source_dir)/$(name)
-	cd $(source_dir)/$(name) && git checkout $(tag) && git archive --format=tar --prefix=$(name)/ $(tag) > $(name)-$(package_version).tar
+	cd $(source_dir)/$(name) && git checkout $(tag) && git archive --format=tar --prefix=$(name)-$(package_version)/ $(tag) > $(name)-$(package_version).tar
 	cd $(source_dir) && gzip $(name)/$(name)-$(package_version).tar
 	cp $(source_dir)/$(name)/$(name)-$(package_version).tar.gz $(source_dir)/$(name)-$(package_version).tar.gz
 
@@ -40,7 +40,6 @@ rpm: prepare-spec
 	$(rpmbuild_dir)/SOURCES \
 	$(rpmbuild_dir)/SPECS \
 	$(rpmbuild_dir)/SRPMS
-	echo $(rpm_version); exit
 	cp $(source_dir)/$(name)-$(package_version).tar.gz $(rpmbuild_dir)/SOURCES
 	rpmbuild --nodeps -v -ba $(spec) --define "_topdir $(rpmbuild_dir)" --define "dist $(dist)" --define "package_version $(package_version)"
 
