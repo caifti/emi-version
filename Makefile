@@ -41,7 +41,7 @@ rpm: prepare-spec
 	$(rpmbuild_dir)/SPECS \
 	$(rpmbuild_dir)/SRPMS
 	echo $(rpm_version); exit
-	cp $(source_dir)/$(name)-$(version).tar.gz $(rpmbuild_dir)/SOURCES
+	cp $(source_dir)/$(name)-$(package_version).tar.gz $(rpmbuild_dir)/SOURCES
 	rpmbuild --nodeps -v -ba $(spec) --define "_topdir $(rpmbuild_dir)" --define "dist $(dist)" --define "package_version $(package_version)"
 
 clean:
