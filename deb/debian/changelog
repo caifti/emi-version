@@ -1,6 +1,0 @@
-emi-version (3.5.0-1.deb6.1) stable; urgency=low
-
-  * Switch to dpkg-source 3.0 (quilt) format
-
- -- Cristina Aiftimiei <aiftim@pd.infn.it>  Mon, 29 Jul 2013 15:10:15 +0000
-
